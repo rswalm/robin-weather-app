@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Robin">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>Robin Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/jquery-ui-1.12.1/jquery-ui.css">
+    <script src="./assets/jquery-3.5.1.min.js"></script>
+    <script src="./assets/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="./assets/dashboard.css" rel="stylesheet">
+    <!-- <script src="./assets/scripts/events.js"></script> -->
+    <script>
+
+        function callWeather() {
+            var city = $('#searchweather').val();
+            console.log(city);
+            //var apiKey = "5dd765a29b95b2e058dfd9f33a1dbd0d";
+            var apiKey = "752b77c83961d308e74cbe21652c4824";
+            $.getJSON("http://api.openweathermap.org/data/2.5/find?q="+city+"&appid=" + apiKey, function (data) {
+                        console.log(data);
+                        //console.log(data.list[0]);
+                        //console.log(data.list[0].name);
+                        console.log(data.list[0].sys.country);
+                        
+
+                        city_name = data.list[0].name;
+                        country_name = data.list[0].sys.country;
+                        weather_description = data.list[0].weather[0].description;
+                        temp = data.list[0].main.temp;
+                        pressure = data.list[0].main.pressure;
+                        wind_speed = data.list[0].wind.speed;
+                        
+                        console.log(weather_description);
+                        $("#cityname").html(city_name + "("+ country_name + ") " + "has " + weather_description);
+                        $(".temp").html(temp);
+                        $(".pressure").html(pressure + " mBar");
+                        $(".wind-spd").html(wind_speed + " m/s");
+                        $('.weather-descr').html(weather_description);
+
+                    })
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Robin Weather App</a>
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <div class="input-group mb-3">
+                                <input id="searchweather" name="searchweather" class="form-control" type="text"
+                                    placeholder="Enter City name" style="width:130px;" aria-label="Search">
+                                <button type="button" onclick="callWeather();"><i class="fa fa-search"></i></button>
+                            </div>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                Toronto
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                New York
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                London
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                <h2>Weather details</h2>
+                <div style="margin: 10%;">
+                    <h2 class="text-center" id="cityname"></h2>
+
+                    <div>
+                       <table class="table table-bordered">
+                           <tr>
+                               <td>
+                                   <strong>Description:</strong>
+                               </td>
+                               <td>
+                                 <p class="weather-descr col-xs-12"></p>
+                               </td>
+                           </tr>
+                           <tr>
+                               <td><strong>Temp:</strong></td>
+                               <td><p class="temp col-xs-12"></p></td>
+                           </tr>
+                           <tr>
+                               <td><strong>Pressure: </strong></td>
+                               <td><p class="pressure col-xs-12"></p></td>
+                           </tr>
+                           <tr>
+                               <td><strong>Wind: </strong></td>
+                               <td><p class="wind-spd col-xs-12"></p></td>
+                           </tr>
+                       </table>
+       
+                        <!-- forecast  -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
