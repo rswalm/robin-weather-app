@@ -21,8 +21,8 @@
         function callWeather() {
             var city = $('#searchweather').val();
             console.log(city);
-            //var apiKey = "5dd765a29b95b2e058dfd9f33a1dbd0d";
-            var apiKey = "752b77c83961d308e74cbe21652c4824";
+            var apiKey = "5dd765a29b95b2e058dfd9f33a1dbd0d";
+            
             $.getJSON("http://api.openweathermap.org/data/2.5/find?q="+city+"&appid=" + apiKey, function (data) {
                         console.log(data);
                         //console.log(data.list[0]);
