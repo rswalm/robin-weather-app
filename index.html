@@ -23,7 +23,7 @@
             console.log(city);
             var apiKey = "5dd765a29b95b2e058dfd9f33a1dbd0d";
             
-            $.getJSON("http://api.openweathermap.org/data/2.5/find?q="+city+"&appid=" + apiKey, function (data) {
+            $.getJSON("https://api.openweathermap.org/data/2.5/find?q="+city+"&appid=" + apiKey, function (data) {
                         console.log(data);
                         //console.log(data.list[0]);
                         //console.log(data.list[0].name);
