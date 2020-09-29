@@ -1,0 +1,20 @@
+{
+  "name": "robin-weather-app",
+  "version": "1.0.0",
+  "description": "weather app 2020\r I have created a dashboard application with search functionality to find current weather conditions and the future weather outlook for multiple cities. Use AJAX to hook into the API to retrieve data in JSON format. User can search for weather reports by city using the openweathermap API. when the user searches for a city, the following information is displayed: Current temperature, Current humidity, Windspeed, Uv index, 5 day forecast, my app hass icons to show the weather condition, search history.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rswalm/robin-weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rswalm/robin-weather-app/issues"
+  },
+  "homepage": "https://github.com/rswalm/robin-weather-app#readme"
+}
